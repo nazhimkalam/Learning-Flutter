@@ -1,4 +1,7 @@
+import 'package:bmi_calculator/ReusableCard.dart';
+import 'package:bmi_calculator/ReusableCardContent.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 const cardColour = 0xFF1D1E33;
@@ -14,7 +17,9 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("BMI CALCULATOR"),
+          title: Center(
+            child: Text("BMI CALCULATOR", textAlign: TextAlign.center),
+          ),
         ),
         body: Column(
           children: <Widget>[
@@ -22,10 +27,16 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableCard(colour: Color(cardColour)),
+                    child: ReusableCard(
+                        colour: Color(cardColour),
+                        cardChild: ReusableCardContent(icon: FontAwesomeIcons.mars, label: "MALE",),
+                    ),
                   ),
                   Expanded(
-                    child: ReusableCard(colour: Color(cardColour)),
+                    child: ReusableCard(
+                      colour: Color(cardColour),
+                      cardChild: ReusableCardContent(icon: FontAwesomeIcons.venus, label: "FEMALE",),
+                    ),
                 ),
               ],
             )),
@@ -54,22 +65,4 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ReusableCard extends StatelessWidget {
 
-  // Property
-  final Color colour;
-
-  // Constructor
-  ReusableCard({ @required this.colour });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-    );
-  }
-}
