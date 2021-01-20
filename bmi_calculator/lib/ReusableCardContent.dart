@@ -1,10 +1,6 @@
 // This is the Reusable Card Content Widget
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
-
-const textLabelStyle = TextStyle(
-    fontSize: 18.0,
-    color: Color(0xFF8D8E98)
-);
 
 class ReusableCardContent extends StatelessWidget {
 
@@ -29,7 +25,7 @@ class ReusableCardContent extends StatelessWidget {
         ),
         Text(
           label,
-          style: textLabelStyle
+          style: kTextLabelStyle
         )
       ],
     );
