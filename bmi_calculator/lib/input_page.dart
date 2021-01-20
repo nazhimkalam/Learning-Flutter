@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/BMI_Calculator.dart';
+import 'package:bmi_calculator/BottomButton.dart';
 import 'package:bmi_calculator/ResultsPage.dart';
 import 'package:bmi_calculator/ReusableCard.dart';
 import 'package:bmi_calculator/ReusableCardContent.dart';
@@ -195,21 +197,22 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage()));
-              },
-              child: Container(
-                color: Color(kBottomContainerColour),
-                child: Center(child: Text("CALCULATE", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
-                margin: EdgeInsets.only(top: 10.0),
-                width: double.infinity,
-                height: kBottomContainerHeight,
-              ),
-            )
+            BottomButton(buttonTitle: "CALCULATE", onTap: (){
+
+              BMI_Calculator calculator = BMI_Calculator(height: height, weight: weight);
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage(
+                BMIResult: calculator.calculateBMI().toString(),
+                resultText: calculator.getResult().toString(),
+                resultInterpretation: calculator.getInterpretation().toString()
+              )));
+
+            }),
           ],
         ));
   }
 }
+
+
 
 
