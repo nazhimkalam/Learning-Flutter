@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/ResultsPage.dart';
 import 'package:bmi_calculator/ReusableCard.dart';
 import 'package:bmi_calculator/ReusableCardContent.dart';
 import 'package:bmi_calculator/constants.dart';
@@ -118,6 +119,7 @@ class _InputPageState extends State<InputPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 FloatingActionButton(
+                                  heroTag: "btn1",
                                   onPressed: (){
                                     setState(() {
                                       weight++;
@@ -130,6 +132,7 @@ class _InputPageState extends State<InputPage> {
                                   width: 10,
                                 ),
                                 FloatingActionButton(
+                                  heroTag: "btn2",
                                   onPressed: (){
                                     setState(() {
                                       weight--;
@@ -162,6 +165,7 @@ class _InputPageState extends State<InputPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+                                heroTag: "btn3",
                                 onPressed: (){
                                   setState(() {
                                     age++;
@@ -174,6 +178,7 @@ class _InputPageState extends State<InputPage> {
                                 width: 10,
                               ),
                               FloatingActionButton(
+                                heroTag: "btn4",
                                 onPressed: (){
                                   setState(() {
                                     age--;
@@ -190,11 +195,17 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            Container(
-              color: Color(kBottomContainerColour),
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage()));
+              },
+              child: Container(
+                color: Color(kBottomContainerColour),
+                child: Center(child: Text("CALCULATE", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
+                margin: EdgeInsets.only(top: 10.0),
+                width: double.infinity,
+                height: kBottomContainerHeight,
+              ),
             )
           ],
         ));
