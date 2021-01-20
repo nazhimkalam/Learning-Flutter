@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +113,80 @@ class _InputPageState extends State<InputPage> {
                             Text(
                               weight.toString(),
                               style: kTextThickFontStyle,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FloatingActionButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  },
+                                  child: Icon(Icons.add, color: Colors.white,),
+                                  backgroundColor: Color(0xff4c4f5e),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                FloatingActionButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  },
+                                  child: Icon(Icons.remove, color: Colors.white,),
+                                  backgroundColor: Color(0xff4c4f5e),
+                                ),
+                              ],
                             )
                           ],
                         ),
                     ),
                   ),
                   Expanded(
-                    child: ReusableCard(colour: Color(kCardColour)),
+                    child: ReusableCard(
+                        colour: Color(kCardColour),
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "AGE",
+                            style: kTextLabelStyle,
+                          ),
+                          Text(
+                            age.toString(),
+                            style: kTextThickFontStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                onPressed: (){
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                                child: Icon(Icons.add, color: Colors.white,),
+                                backgroundColor: Color(0xff4c4f5e),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              FloatingActionButton(
+                                onPressed: (){
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                                child: Icon(Icons.remove, color: Colors.white,),
+                                backgroundColor: Color(0xff4c4f5e),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                 ),
               ],
             )),
