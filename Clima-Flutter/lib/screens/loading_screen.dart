@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../services/location.dart';
+
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
@@ -16,13 +18,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocation() async{
-    try{
-      // If user didn't give access for the location then, this throws an exception
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
-      print("This is the location details: " + position.toString());
-    }catch(e){
-      print(e);
-    }
+    Location location = new Location();
+    await location.getCurrentLocation();
+    print("This is the latitude value : " + location.latitude.toString());
+    print("This is the longitude value : " + location.longitude.toString());
+
   }
 
   @override
