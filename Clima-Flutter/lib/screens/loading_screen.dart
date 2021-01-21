@@ -16,9 +16,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocation() async{
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
-    print("Displaying the location");
-    print(position);
+    try{
+      // If user didn't give access for the location then, this throws an exception
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+      print("This is the location details: " + position.toString());
+    }catch(e){
+      print(e);
+    }
   }
 
   @override
